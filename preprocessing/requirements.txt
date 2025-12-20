@@ -7,3 +7,4 @@ seaborn
 openpyxl
 mlflow
 flask
+dagshub
