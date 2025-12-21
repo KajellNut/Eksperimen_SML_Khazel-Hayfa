@@ -30,3 +30,10 @@ jobs:
     - name: Run Preprocessing
       working-directory: ./preprocessing
       run: python automate_Khazel-Hayfa.py
+    
+    # 5. Simpan Output agar bisa didownload
+    - name: Upload Preprocessed Data
+      uses: actions/upload-artifact@v3
+      with:
+        name: hasil-preprocessing
+        path: preprocessing/output/E Commerce Dataset_preprocessing.csv

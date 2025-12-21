@@ -7,15 +7,13 @@ def load_and_clean_data():
     print("Memulai proses Data Preprocessing otomatis...")
 
     # Load Data
-    input_file = 'D:\Kuliah Kajel\Asah Dicoding\Submission\MSML\E Commerce Dataset_raw.xlsx'
-
-    # Cek path agar aman (biar bisa jalan dari folder mana saja)
-    if not os.path.exists(input_file):
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        filename = os.path.join(current_dir, 'E Commerce Dataset_raw.xlsx')
+    base_path = os.getcwd()
+    input_file = os.path.join(base_path, 'E Commerce Dataset_raw.xlsx')
 
     if not os.path.exists(input_file):
-        print(f"Error: File '{input_file}' tidak ditemukan.")
+        print(f"Error: File '{input_file}' tidak ditemukan di lokasi saat ini: {base_path}")
+        # Coba cek isi folder untuk debugging di GitHub Actions log
+        print("Isi folder saat ini:", os.listdir(base_path))
         return
 
     df = pd.read_excel(input_file, sheet_name='E Comm')
@@ -56,8 +54,8 @@ def load_and_clean_data():
     for col in obj_cols:
         df[col] = le.fit_transform(df[col])
 
-    # Simpan Data Bersih ke Folder 'Membangun_model'
-    output_folder = 'D:\Kuliah Kajel\Asah Dicoding\Submission\MSML\Preprocessing'
+    # Simpan Data
+    output_folder = os.path.join(base_path, 'preprocessing')
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
         
