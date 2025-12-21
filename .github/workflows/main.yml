@@ -33,7 +33,7 @@ jobs:
     
     # 5. Simpan Output agar bisa didownload
     - name: Upload Preprocessed Data
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: hasil-preprocessing
         path: preprocessing/output/E Commerce Dataset_preprocessing.csv
