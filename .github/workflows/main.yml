@@ -36,4 +36,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: hasil-preprocessing
-        path: preprocessing/output/E Commerce Dataset_preprocessing.csv
+        path: preprocessing/E Commerce Dataset_preprocessing.csv
